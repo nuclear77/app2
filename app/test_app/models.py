@@ -14,11 +14,10 @@ class Author(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=100)
     year = models.IntegerField()
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    library = models.ForeignKey(Library, on_delete=models.CASCADE)
-
+    author = models.ForeignKey(Author, on_delete=models.ManyToOneRel)
+    library = models.ForeignKey(Library, on_delete=models.ManyToOneRel)
 
 
 class LibraryBook(models.Model):
-    library = models.ForeignKey(Library, on_delete=models.CASCADE)
+    library = models.ForeignKey(Library, on_delete=models.ManyToOneRel)
     books = models.ManyToManyField(Book)
